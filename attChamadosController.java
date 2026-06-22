@@ -12,9 +12,9 @@ import java.util.ArrayList;
  */
 public class attChamadosController {
     
-    private static ArrayList<attChamados> listaChamados = new ArrayList<>();
+    private static ArrayList<attChamadosModel> listaChamados = new ArrayList<>();
      
-     public boolean salvar(attChamados chamado) {
+     public boolean salvar(attChamadosModel chamado) {
          if (chamado != null) {
              listaChamados.add(chamado);
              return true;
@@ -23,11 +23,11 @@ public class attChamadosController {
          }
      }
 
-     public ArrayList<attChamados> listar() {
+     public ArrayList<attChamadosModel> listar() {
          return listaChamados;
      }
      
-     public boolean atualizar(int index, attChamados chamadoAtualizado) {
+     public boolean atualizar(int index, attChamadosModel chamadoAtualizado) {
          if (index >= 0 && index < listaChamados.size() && chamadoAtualizado != null) {
              listaChamados.set(index, chamadoAtualizado);
              return true;
@@ -45,9 +45,9 @@ public class attChamadosController {
          }
      }
      
-     public ArrayList<attChamados> pesquisar(String termo){
-            ArrayList<attChamados> resultados = new ArrayList<>();
-            for (attChamados chamado : listaChamados) {
+     public ArrayList<attChamadosModel> pesquisar(String termo){
+            ArrayList<attChamadosModel> resultados = new ArrayList<>();
+            for (attChamadosModel chamado : listaChamados) {
                 if (chamado.getUsuario().contains(termo.toLowerCase())){
                     resultados.add(chamado);
                 }

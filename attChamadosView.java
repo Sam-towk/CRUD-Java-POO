@@ -27,11 +27,11 @@ public class attChamadosView extends javax.swing.JFrame {
     
     private void atualizarTabela(String termo){
         attChamadosController ctrl = new attChamadosController();
-        ArrayList<attChamados> lChamados =  ctrl.pesquisar(termo);
+        ArrayList<attChamadosModel> lChamados =  ctrl.pesquisar(termo);
         DefaultTableModel modelo = (DefaultTableModel) jTChamados.getModel();
         modelo.setNumRows(0);
 
-        for (attChamados chamado : lChamados) {
+        for (attChamadosModel chamado : lChamados) {
             Object[] linha = {
             chamado.getUsuario(),
             chamado.getTicket(),
@@ -96,15 +96,18 @@ public class attChamadosView extends javax.swing.JFrame {
         jBNovo.setText("Novo");
         jBNovo.addActionListener(this::jBNovoActionPerformed);
 
-        jLabel2.setText("Setor");
+        jLabel2.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel2.setText("Setor*");
 
         jCbxResolvido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não", " " }));
 
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("Ticket *");
 
         jLabel4.setText("Resolvido");
 
-        jLabel5.setText("Problema");
+        jLabel5.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel5.setText("Problema*");
 
         jLabel6.setText("Custo");
 
@@ -202,7 +205,7 @@ public class attChamadosView extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -258,7 +261,7 @@ public class attChamadosView extends javax.swing.JFrame {
             return;
         }
 
-        attChamados chamado = new attChamados(usuario, ticket, setor, problema, custo, resolvido);
+        attChamadosModel chamado = new attChamadosModel(usuario, ticket, setor, problema, custo, resolvido);
         attChamadosController ctrl = new attChamadosController();
         ctrl.salvar(chamado);
         atualizarCampos();
@@ -281,7 +284,7 @@ public class attChamadosView extends javax.swing.JFrame {
                 return;
             }
 
-            attChamados chamadoAtualizado = new attChamados(usuario, ticket, setor, problema, custo, resolvido);
+            attChamadosModel chamadoAtualizado = new attChamadosModel(usuario, ticket, setor, problema, custo, resolvido);
             attChamadosController ctrl = new attChamadosController();
             ctrl.atualizar(linhaSelecionada, chamadoAtualizado);
             atualizarCampos();
@@ -318,7 +321,7 @@ public class attChamadosView extends javax.swing.JFrame {
         if(linhaSelecionada >=0){
             attChamadosController ctrl = new attChamadosController();
             
-            attChamados chamadoSelecionado = ctrl.listar().get(linhaSelecionada);jTxtUsuario.setText("");
+            attChamadosModel chamadoSelecionado = ctrl.listar().get(linhaSelecionada);jTxtUsuario.setText("");
             jTxtUsuario.setText(chamadoSelecionado.getUsuario());
             jTxtTicket.setText(chamadoSelecionado.getTicket());
             jTxtSetor.setText(chamadoSelecionado.getSetor());

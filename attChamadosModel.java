@@ -8,7 +8,7 @@ package com.mycompany.trabchamdospoo;
  *
  * @author Samuel
  */
-public class attChamados {
+public class attChamadosModel {
 
     private String ticket;
     private String usuario;
@@ -17,10 +17,10 @@ public class attChamados {
     private double custo;
     private boolean resolvido;
 
-    public attChamados() {
+    public attChamadosModel() {
     }
 
-    public attChamados(String usuario, String ticket, String setor, String problema, double custo, boolean resolvido) {
+    public attChamadosModel(String usuario, String ticket, String setor, String problema, double custo, boolean resolvido) {
         this.ticket = ticket;
         this.setor = setor;
         this.problema = problema;
